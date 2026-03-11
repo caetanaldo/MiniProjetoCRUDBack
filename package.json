@@ -2,6 +2,7 @@
   "name": "miniprojetocrudback",
   "version": "1.0.0",
   "description": "Mini Projeto fazendo um sistema de CRUD em Back-End",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

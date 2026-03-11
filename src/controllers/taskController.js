@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import Tasks from "../models/Tasks.js";
 
 const taskController = {
@@ -95,7 +96,6 @@ const taskController = {
         try {
             const{title, description, completed} = req.query;
             const where = {};
-            const Op = require("sequelize").Op;
 
             if (title) where.title = { [Op.like]: `%${title}%` };
             if (description) where.description = { [Op.like]: `%${description}%` };
@@ -105,7 +105,7 @@ const taskController = {
                 where
             });
             
-            res.json({sucess: true, data: products});
+            res.json({sucess: true, data: tasks});
         } catch (err) {
             res.status(500).json({success: false, error: err.message});
         }
