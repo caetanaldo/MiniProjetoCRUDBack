@@ -35,7 +35,10 @@ const taskController = {
     create: async (req, res) => {
         try {
             const { title, description, completed } = req.body;
-
+            
+            if (!title.trim()){
+                return res.status(422).json({ error: "Titulo obrigatório" });
+            }
             const task = await Tasks.create({
                 title,
                 description,
