@@ -35,8 +35,8 @@ const taskController = {
     create: async (req, res) => {
         try {
             const { title, description, completed } = req.body;
-            
-            if (!title.trim()){
+
+            if (!title.trim()) {
                 return res.status(422).json({ error: "Titulo obrigatório" });
             }
             const task = await Tasks.create({
@@ -94,25 +94,36 @@ const taskController = {
             return res.status(500).json({ error: error.message });
         }
     },
-// Listar produtos com filtros
+    // Listar produtos com filtros
     list: async (req, res) => {
         try {
-            const{title, description, completed} = req.query;
+            const { title, description, completed, order } = req.query;
             const where = {};
+
+            let orderBy = [];
 
             if (title) where.title = { [Op.like]: `%${title}%` };
             if (description) where.description = { [Op.like]: `%${description}%` };
-            if (completed !== undefined){
-                 where.completed = completed === "true"
+            if (completed !== undefined) {
+                where.completed = completed === "true"
             };
 
+            if (order === "asc") {
+                orderBy = [["title", "ASC"]];
+            }
+
+            if (order === "desc") {
+                orderBy = [["title", "DESC"]];
+            }
+
             const tasks = await Tasks.findAll({
-                where
+                where,
+                order: orderBy
             });
-            
-            res.json({sucess: true, data: tasks});
+
+            res.json({ sucess: true, data: tasks });
         } catch (err) {
-            res.status(500).json({success: false, error: err.message});
+            res.status(500).json({ success: false, error: err.message });
         }
     }
 };
