@@ -10,7 +10,8 @@ const Tasks = sequelize.define("Tasks",{
         type: DataTypes.STRING
     },
     completed:{
-        type: DataTypes.BOOLEAN   
+        type: DataTypes.BOOLEAN,   
+        defaultValue: false
     }
 })
 
