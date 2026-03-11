@@ -102,7 +102,9 @@ const taskController = {
 
             if (title) where.title = { [Op.like]: `%${title}%` };
             if (description) where.description = { [Op.like]: `%${description}%` };
-            if (completed !== undefined) where.completed = completed;
+            if (completed !== undefined){
+                 where.completed = completed === "true"
+            };
 
             const tasks = await Tasks.findAll({
                 where
