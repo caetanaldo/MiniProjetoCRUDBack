@@ -1,12 +1,12 @@
 import express from "express";
-import tasksController from "../controllers/tasksController.js";
+import taskController from "../controllers/taskcontroller.js";
 
 const tasksRouter = express.Router();
 
-tasksRouter.get('/', tasksController.getAll)
-tasksRouter.get('/:id', tasksController.getById)
-tasksRouter.post('/', tasksController.create)
-tasksRouter.put('/:id', tasksController.update)
-tasksRouter.delete('/:id', tasksController.delete)
+tasksRouter.get('/', taskController.getAll)
+tasksRouter.get('/:id', taskController.getById)
+tasksRouter.post('/', taskController.create)
+tasksRouter.put('/:id', taskController.update)
+tasksRouter.delete('/:id', taskController.delete)
 
 export default tasksRouter;

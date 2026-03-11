@@ -1,4 +1,4 @@
-import Tasks from "../models/Tasks";
+import Tasks from "../models/Tasks.js";
 
 const taskController = {
 
