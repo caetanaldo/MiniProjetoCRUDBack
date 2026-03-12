@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "../services/api";
 
-export default function TaskForm() {
+export default function TaskForm({loadTasks}) {
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")

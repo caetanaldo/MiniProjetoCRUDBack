@@ -34,6 +34,8 @@ const taskController = {
     //  Criar task
     create: async (req, res) => {
         try {
+            console.log(req.body)
+
             const { title, description, completed } = req.body;
 
             if (!title.trim()) {
